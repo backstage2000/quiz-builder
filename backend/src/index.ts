@@ -1,30 +1,21 @@
-import express from 'express';
-import cors from 'cors';
+import 'dotenv/config';
+import app from './app';
 import { client } from './config/database';
-import './models/quiz.model';
 
-const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-app.use(cors());
-app.use(express.json());
+const start = async () => {
+  try {
+    await client.authenticate();
+    console.log('DB connected');
 
-app.get('/', (req, res) => {
-  res.json({
-    message: 'Hello from backend 🚀',
-  });
-});
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  }
+};
 
-client
-  .authenticate()
-  .then(async () => {
-    console.log('Database connected');
-
-    await client.sync({ alter: true }); // создаст таблицы
-    console.log('Models synced');
-  })
-  .catch((err) => console.log(err));
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+start();

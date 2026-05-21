@@ -1,10 +1,14 @@
-import { DataTypes, Model } from 'sequelize';
+import { DataTypes, Model, HasManyGetAssociationsMixin } from 'sequelize';
 import { client } from '../config/database';
+import { Question } from './Question';
 
 export class Quiz extends Model {
   declare id: number;
   declare title: string;
   declare description: string;
+
+  declare questions?: Question[];
+  declare getQuestions: HasManyGetAssociationsMixin<Question>;
 }
 
 Quiz.init(
