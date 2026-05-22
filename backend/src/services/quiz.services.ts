@@ -73,7 +73,38 @@ const create = async (data: CreateQuizDto) => {
   });
 };
 
+const remove = async (id: number) => {
+  const quiz = await Quiz.findByPk(id, {
+    include: [
+      {
+        model: Question,
+        as: 'questions',
+        include: [{ model: Option, as: 'options' }],
+      },
+    ],
+  });
+
+  if (!quiz) return null;
+
+  for (const question of quiz.questions || []) {
+    await Option.destroy({
+      where: { questionId: question.id },
+    });
+  }
+
+  await Question.destroy({
+    where: { quizId: id },
+  });
+
+  await Quiz.destroy({
+    where: { id },
+  });
+
+  return true;
+};
+
 export const quizServices = {
   getAll,
   create,
+  remove,
 };

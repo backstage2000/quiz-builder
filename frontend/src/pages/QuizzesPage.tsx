@@ -3,10 +3,12 @@ import { EmptyState, QuizCard } from "@components";
 import { Spinner } from "flowbite-react";
 import { useQuizzes } from "@features/quiz/hooks";
 import useCreateQuiz from "@features/quiz/hooks/usecreateQuiz";
+import useDeleteQuiz from "@features/quiz/hooks/useDeleteQuiz";
 
 const QuizListPage = () => {
   const { data: quizzes = [], isLoading } = useQuizzes();
   const { mutate: createQuiz, isPending } = useCreateQuiz();
+  const { mutate: deleteQuiz } = useDeleteQuiz();
 
   const testQuiz = {
     title: "Test Quiz",
@@ -24,7 +26,7 @@ const QuizListPage = () => {
   };
 
   const handleDelete = (id: number) => {
-    console.log("Delete:", id);
+    deleteQuiz(id);
   };
 
   if (isLoading) {
