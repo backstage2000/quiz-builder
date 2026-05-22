@@ -109,3 +109,31 @@ POST /quizzes
   ]
 }
 ```
+
+## Structure
+
+```
+src/
+├── main.tsx          # Entry point, bootstraps providers and router
+├── store.tsx         # React Query client setup
+├── config/           # App configuration (Router, ThemeProvider, Toaster)
+├── styles/           # Base styles and global CSS
+├── assets/           # Static assets
+├── types/            # Global type definitions
+├── utils/            # Shared utility functions
+├── hooks/            # Global hooks (usePagination, usePermissions, etc.)
+├── pages/            # Route-level page components (App, Home, Login, NotFound, etc.)
+├── layouts/          # Reusable layout sections (Header, NavMenu, ErrorFallback)
+├── components/       # Shared UI components not tied to business logic
+└── features/         # Feature modules
+    ├── auth/
+    ├── counterparty/
+    ├── orders/
+    ├── tanks/
+    ├── pump/
+    ├── pump-gun/
+    ├── gas-station/
+    ├── fuel/
+    ├── managers/
+    └── cashiers/
+```
