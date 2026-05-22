@@ -6,16 +6,16 @@ Backend REST API for a quiz application built with **Node.js**, **Express**, **S
 
 ## Tech Stack
 
-Tech Stack
-Node.js
-Express.js
-TypeScript
-Sequelize (PostgreSQL)
-MVC architecture
+- **Node.js**
+- **Express.js** 
+- **TypeScript** 
+- **Sequelize** 
+- **PostgreSQL**
+- **MVC** 
 
 ##  📁Project Structure
 
-
+```
 src/
 ├── config/        # DB config
 ├── controllers/   # Request handlers
@@ -29,6 +29,7 @@ src/
 ├── setup.ts       # DB setup / initialization
 ├── app.ts         # Express app config
 └── index.ts       # Server entry point
+```
 
 ## Getting Started
 
@@ -110,30 +111,67 @@ POST /quizzes
 }
 ```
 
-## Structure
+
+#   Quiz FRONT END
+
+## Tech Stack
+
+- **React** — UI library
+- **TypeScript** — static typing
+- **TanStack Query** — server state management
+- **Axios** — HTTP client
+- **Tailwind CSS** — utility-first styling
+- **Zod** — schema validation
+- **React Hook Form** — form management
+- **Motion** — animations
+- **Flowbite** — UI components
+
+##  📁Project Structure
 
 ```
 src/
-├── main.tsx          # Entry point, bootstraps providers and router
-├── store.tsx         # React Query client setup
-├── config/           # App configuration (Router, ThemeProvider, Toaster)
-├── styles/           # Base styles and global CSS
-├── assets/           # Static assets
-├── types/            # Global type definitions
-├── utils/            # Shared utility functions
-├── hooks/            # Global hooks (usePagination, usePermissions, etc.)
-├── pages/            # Route-level page components (App, Home, Login, NotFound, etc.)
-├── layouts/          # Reusable layout sections (Header, NavMenu, ErrorFallback)
-├── components/       # Shared UI components not tied to business logic
-└── features/         # Feature modules
-    ├── auth/
-    ├── counterparty/
-    ├── orders/
-    ├── tanks/
-    ├── pump/
-    ├── pump-gun/
-    ├── gas-station/
-    ├── fuel/
-    ├── managers/
-    └── cashiers/
+├── main.tsx           # Entry point
+├── store.tsx          # React Query client setup
+├── config/            # App configuration (Router, axios)
+├── style/             # Base styles and global CSS
+├── pages/             # Route-level page components
+├── layouts/           # Reusable layout sections (Header, Footer)
+├── components/        # Shared UI components
+└── features/
+    └── quiz/
+        ├── hooks/        # TanStack Query hooks
+        ├── services/     # Axios API calls
+        └── validation/   # Zod schemas
 ```
+
+
+## Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone 
+cd frontend
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file in the root:
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+### 4. Run the project
+
+```bash
+npm run dev
+```
+
+
