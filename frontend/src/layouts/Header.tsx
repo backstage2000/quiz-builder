@@ -35,24 +35,11 @@ export default function Header() {
             {/* <LayoutGrid size={16} /> */}
             <span className="hidden sm:block">Quizzes</span>
           </Link>
-
-          <Link
-            to="/create"
-            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm transition-all
-              ${
-                pathname === "/create"
-                  ? "bg-purple-800 text-white shadow-md"
-                  : "text-purple-200 hover:bg-purple-900/60 hover:text-white"
-              }`}
-          >
-            {/* <Plus size={16} /> */}
-            <span className="hidden sm:block">Create</span>
-          </Link>
         </nav>
 
         {/* Action Button */}
         <Link
-          to="/create"
+          to="/quizzes/create"
           className="flex items-center gap-2 rounded-xl bg-purple-700 px-4 py-2 text-sm font-medium text-purple-100 transition-all hover:bg-purple-600 hover:shadow-lg hover:shadow-purple-900/30"
         >
           {/* <Plus size={16} /> */}

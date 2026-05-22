@@ -1,3 +1,6 @@
+import type z from "zod";
+import type createQuizSchema from "./validation/createQuizSchema";
+
 export interface Quiz {
   id: number;
   title: string;
@@ -23,3 +26,5 @@ export interface CreateQuiz {
   description?: string;
   questions: CreateQuestion[];
 }
+
+export type CreateQuizFormData = z.infer<typeof createQuizSchema>;
