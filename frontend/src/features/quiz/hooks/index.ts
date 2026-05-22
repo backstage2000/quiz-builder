@@ -1,1 +1,1 @@
-export { default as useHello } from "./useGetHello";
+export { default as useQuizzes } from "./useQuizzes";

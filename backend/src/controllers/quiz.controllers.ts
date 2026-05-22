@@ -12,6 +12,27 @@ const get = async (_: Request, res: Response): Promise<void> => {
   res.json(quizzes);
 };
 
+const create = async (req: Request, res: Response): Promise<void> => {
+  const { title, description, questions } = req.body;
+
+  if (!title) {
+    throw ApiError.badRequest('Title is required');
+  }
+
+  if (!questions?.length) {
+    throw ApiError.badRequest('Questions are required');
+  }
+
+  const quiz = await quizServices.create({
+    title,
+    description,
+    questions,
+  });
+
+  res.status(201).json(quiz);
+};
+
 export const controllers = {
   get,
+  create,
 };

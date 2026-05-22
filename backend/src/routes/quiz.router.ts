@@ -5,5 +5,6 @@ import { controllers } from '../controllers/quiz.controllers';
 const quizRouter = express.Router();
 
 quizRouter.get('/', catchError(controllers.get));
+quizRouter.post('/create', catchError(controllers.create));
 
 export default quizRouter;

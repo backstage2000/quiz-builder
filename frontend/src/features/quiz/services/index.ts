@@ -1,1 +1,2 @@
-export { default as getHello } from "./getHello";
+export { default as getQuizzes } from "./getQuizzes";
+export { default as createQuiz } from "./createQuiz";

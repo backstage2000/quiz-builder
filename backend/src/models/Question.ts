@@ -4,7 +4,7 @@ import { client } from '../config/database';
 export class Question extends Model {
   declare id: number;
   declare text: string;
-  declare type: 'single' | 'multiple' | 'text';
+  declare type: 'single' | 'multiple';
   declare quizId: number;
 }
 
@@ -20,7 +20,7 @@ Question.init(
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM('single', 'multiple', 'text'),
+      type: DataTypes.ENUM('single', 'multiple'),
       allowNull: false,
     },
     quizId: {

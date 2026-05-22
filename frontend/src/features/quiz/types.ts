@@ -1,0 +1,25 @@
+export interface Quiz {
+  id: number;
+  title: string;
+  description?: string;
+  createdAt: string;
+}
+
+export type QuestionType = "single" | "multiple";
+
+export interface CreateOption {
+  text: string;
+  isCorrect: boolean;
+}
+
+export interface CreateQuestion {
+  text: string;
+  type: QuestionType;
+  options: CreateOption[];
+}
+
+export interface CreateQuiz {
+  title: string;
+  description?: string;
+  questions: CreateQuestion[];
+}

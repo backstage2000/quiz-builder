@@ -2,14 +2,16 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import flowbiteReact from "flowbite-react/plugin/vite";
 
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), react(), flowbiteReact()],
 
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@config": path.resolve(__dirname, "./src/config"),
+      "@layouts": path.resolve(__dirname, "./src/layouts"),
       "@style": path.resolve(__dirname, "./src/style"),
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@components": path.resolve(__dirname, "./src/components"),
