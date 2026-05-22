@@ -7,5 +7,6 @@ const quizRouter = express.Router();
 quizRouter.get('/', catchError(controllers.get));
 quizRouter.post('/create', catchError(controllers.create));
 quizRouter.delete('/:id', catchError(controllers.remove));
+quizRouter.get('/:id', catchError(controllers.getById));
 
 export default quizRouter;

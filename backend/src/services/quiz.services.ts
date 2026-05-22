@@ -103,8 +103,28 @@ const remove = async (id: number) => {
   return true;
 };
 
+const getById = async (id: number) => {
+  const quiz = await Quiz.findByPk(id, {
+    include: [
+      {
+        model: Question,
+        as: 'questions',
+        include: [
+          {
+            model: Option,
+            as: 'options',
+          },
+        ],
+      },
+    ],
+  });
+
+  return quiz;
+};
+
 export const quizServices = {
   getAll,
   create,
   remove,
+  getById,
 };

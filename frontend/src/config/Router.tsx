@@ -1,4 +1,4 @@
-import { App, QuizzesPageCreate } from "@pages";
+import { App, HomePage, QuizDetailPage, QuizzesPageCreate } from "@pages";
 import type { JSX } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QuizzesPage } from "@pages";
@@ -8,9 +8,11 @@ const Router = (): JSX.Element => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="home" element={<HomePage />} />
           <Route path="quizzes">
             <Route index element={<QuizzesPage />} />
             <Route path="create" element={<QuizzesPageCreate />} />
+            <Route path=":id" element={<QuizDetailPage />} />
           </Route>
         </Route>
       </Routes>

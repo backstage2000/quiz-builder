@@ -8,11 +8,16 @@ import QuestionItem from "./QuestionItem";
 const CreateQuizForm = () => {
   const { mutate: createQuiz, isPending } = useCreateQuiz();
 
-  const { register, handleSubmit, control, reset } =
-    useForm<CreateQuizFormData>({
-      resolver: zodResolver(createQuizSchema),
-      defaultValues: { title: "", description: "", questions: [] },
-    });
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<CreateQuizFormData>({
+    resolver: zodResolver(createQuizSchema),
+    defaultValues: { title: "", description: "", questions: [] },
+  });
 
   const { fields, append } = useFieldArray({ control, name: "questions" });
 
@@ -26,11 +31,19 @@ const CreateQuizForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className="space-y-6 rounded-3xl border border-purple-900/40 bg-purple-950/40 p-6"
     >
-      <input
-        {...register("title")}
-        placeholder="Quiz title"
-        className="w-full rounded-xl bg-purple-900/30 p-3 text-white outline-none"
-      />
+      <div className="space-y-1">
+        <input
+          {...register("title")}
+          placeholder="Quiz title"
+          className={`w-full rounded-xl bg-purple-900/30 p-3 text-white outline-none transition-colors ${
+            errors.title ? "ring-1 ring-red-500" : ""
+          }`}
+        />
+        {errors.title && (
+          <p className="text-sm text-red-400">{errors.title.message}</p>
+        )}
+      </div>
+
       <input
         {...register("description")}
         placeholder="Description"
@@ -44,9 +57,17 @@ const CreateQuizForm = () => {
             control={control}
             register={register}
             index={index}
+            errors={errors}
           />
         ))}
       </div>
+
+      {errors.questions?.root?.message && (
+        <p className="text-sm text-red-400">{errors.questions.root.message}</p>
+      )}
+      {typeof errors.questions?.message === "string" && (
+        <p className="text-sm text-red-400">{errors.questions.message}</p>
+      )}
 
       <button
         type="button"

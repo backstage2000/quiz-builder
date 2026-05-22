@@ -44,8 +44,21 @@ const remove = async (req: Request, res: Response) => {
   res.json({ message: 'Quiz deleted successfully' });
 };
 
+const getById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  const quiz = await quizServices.getById(Number(id));
+
+  if (!quiz) {
+    throw ApiError.notFound('Quiz not found');
+  }
+
+  res.json(quiz);
+};
+
 export const controllers = {
   get,
   create,
   remove,
+  getById,
 };

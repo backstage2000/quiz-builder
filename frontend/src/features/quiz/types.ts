@@ -1,4 +1,4 @@
-import type z from "zod";
+import { z } from "zod";
 import type createQuizSchema from "./validation/createQuizSchema";
 
 export interface Quiz {
@@ -25,6 +25,19 @@ export interface CreateQuiz {
   title: string;
   description?: string;
   questions: CreateQuestion[];
+}
+
+export interface QuizDetail extends Quiz {
+  questions: {
+    id: number;
+    text: string;
+    type: "single" | "multiple";
+    options: {
+      id: number;
+      text: string;
+      isCorrect: boolean;
+    }[];
+  }[];
 }
 
 export type CreateQuizFormData = z.infer<typeof createQuizSchema>;
