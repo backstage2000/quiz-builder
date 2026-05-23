@@ -52,11 +52,11 @@ Create a `.env` file in the root:
 
 ```env
 DB_HOST=localhost
-DB_PORT=2121
-DB_USER=postgres
-DB_PASSWORD=your_password
-DB_NAME=quiz_db
 PORT=3000
+DB_USER=postgres
+DB_PORT=2121
+DB_PASS=123123
+DB_DATABASE=postgres
 ```
 
 ### 4. Setup database
