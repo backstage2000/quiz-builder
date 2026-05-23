@@ -8,7 +8,8 @@ const Router = (): JSX.Element => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="home" element={<HomePage />} />
+          <Route index element={<HomePage />} />
+
           <Route path="quizzes">
             <Route index element={<QuizzesPage />} />
             <Route path="create" element={<QuizzesPageCreate />} />
