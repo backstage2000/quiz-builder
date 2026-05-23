@@ -125,6 +125,7 @@ POST /quizzes
 - **React Hook Form** — form management
 - **Motion** — animations
 - **Flowbite** — UI components
+- **Sonner** — Toaster
 
 ##  📁Project Structure
 
