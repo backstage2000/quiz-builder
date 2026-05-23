@@ -7,7 +7,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "setup": "ts-node src/setup.ts",
+    "seed": "ts-node src/seed.ts"
   },
   "keywords": [],
   "author": "",
